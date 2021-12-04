@@ -73,10 +73,10 @@ def part2(input):
         for i in range(len(num)):                           # For every bit in this record:
             if int(num[i]) == 0:                            # Check if it is a 0 or 1
                 if depthTracker.leftChild == None:          # If we have never seen a child permutation with this value, create a child
-                    depthTracker.leftChild = TreeNode(0)    # Create a child 0 node (automatically gets a weight of 1)
+                    depthTracker.leftChild = TreeNode(0)    # Create a child node (new nodes automatically get a weight of 1)
                     depthTracker = depthTracker.leftChild   # move one level deeper in the tree
                 else:
-                    depthTracker.leftChild.weight += 1      # If we *have* see this before, increment the weight
+                    depthTracker.leftChild.weight += 1      # If we *have* seen this before, increment the weight
                     depthTracker = depthTracker.leftChild   # move one level deeper in the tree
             else:                                           # Repeat for 1's
                 if depthTracker.rightChild == None:
