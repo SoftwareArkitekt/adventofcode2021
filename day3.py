@@ -85,53 +85,7 @@ def part2(input):
                 else:
                     depthTracker.rightChild.weight += 1
                     depthTracker = depthTracker.rightChild
-    
-    """
-     0  vs  1
-1   479    521
-1   243    278
-1   133    145
-1   72     73
-0   37     36
-1   17     20
-1   6      14
-0   8      6
-0   5      3
-0   3      2
-1   1      2
-1   1      1
 
-
-     0  vs  1
-0   479    521
-1   251    228   
-1   122    106
-0   51     55
-1   28     23
-1   14     9
-1   7      2
-0   1      1
-0   1      
-0   1      
-1          1
-0   1      0
-    """
-    
-
-    v0 = 0
-    v1 = 0
-    
-    for num in input:
-        if num[0:11] == "01101110001":
-            if num[11] == "0":
-                v0 += 1
-            else:
-                v1 += 1
-            
-    #print("0 1 00 01 10 11")
-    #print(v0)
-    #print(v1)
-    
 
     # 02 rating rules: find where weight of 1 (right subtree) >= weight of 0
     depthTracker = root
@@ -151,7 +105,6 @@ def part2(input):
         else:
             oxygenRating += str(depthTracker.rightChild.data)
             depthTracker = depthTracker.rightChild
-    #print(oxygenRating)
     
     # C02 rating rules: find where weight of 0 >= weight of 1
     depthTracker = root
@@ -172,12 +125,9 @@ def part2(input):
             co2Rating += str(depthTracker.rightChild.data)
             depthTracker = depthTracker.rightChild
     
-    #return oxygenRating, co2Rating
     return int(oxygenRating, base=2), int(co2Rating, base=2), int(oxygenRating, base=2) * int(co2Rating, base=2)
 
 if __name__ == '__main__':
     i=list(open("3.txt").read().splitlines())
-    # print(part1(i))
-    print("Correct answer:")
-    print("('111101100011', '011011100010')")
+    print(part1(i))
     print(part2(i))
